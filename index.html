@@ -48,14 +48,12 @@
                 var(--bg);
         }
 
-        /* Main Content */
         .main-content {
             padding: 20px 20px 160px;
             max-width: 430px;
             margin: 0 auto;
         }
 
-        /* Hero */
         .hero {
             text-align: center;
             padding: 40px 0 32px;
@@ -93,7 +91,6 @@
             font-weight: 400;
         }
 
-        /* Cards */
         .card {
             background: var(--bg-elevated);
             border-radius: 24px;
@@ -168,7 +165,6 @@
             gap: 10px;
         }
 
-        /* Progress */
         .progress-section {
             margin-top: 28px;
             padding: 28px;
@@ -221,7 +217,6 @@
             min-height: 22px;
         }
 
-        /* Action Button */
         .action-btn {
             width: 100%;
             padding: 16px 24px;
@@ -248,7 +243,6 @@
             cursor: not-allowed;
         }
 
-        /* Tab Bar - iOS 26: icon top, label bottom */
         .tab-bar-wrap {
             position: fixed;
             bottom: 0;
@@ -311,7 +305,6 @@
             stroke-width: 1.8;
         }
 
-        /* Respring Overlay */
         .respring-overlay {
             position: fixed;
             inset: 0;
@@ -343,7 +336,6 @@
             fill: #fff;
         }
 
-        /* Progress Bar for respring */
         .respring-bar-container {
             width: 200px;
             height: 3px;
@@ -367,78 +359,6 @@
             transition: width 0.3s linear;
         }
 
-        /* Error overlay */
-        .error-overlay {
-            position: fixed;
-            inset: 0;
-            background: #000;
-            z-index: 10000;
-            display: none;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            opacity: 0;
-            transition: opacity 0.3s;
-        }
-
-        .error-overlay.active {
-            display: flex;
-            opacity: 1;
-        }
-
-        .error-icon {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            background: rgba(255, 69, 58, 0.15);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 20px;
-        }
-
-        .error-icon svg {
-            width: 32px;
-            height: 32px;
-            stroke: var(--danger);
-            stroke-width: 2;
-        }
-
-        .error-title {
-            font-size: 20px;
-            font-weight: 700;
-            margin-bottom: 8px;
-            color: var(--danger);
-        }
-
-        .error-desc {
-            font-size: 14px;
-            color: var(--text-secondary);
-            text-align: center;
-            max-width: 280px;
-            line-height: 1.5;
-        }
-
-        .error-retry {
-            margin-top: 24px;
-            padding: 12px 32px;
-            border-radius: 12px;
-            border: none;
-            background: var(--bg-elevated);
-            color: var(--text-primary);
-            font-size: 15px;
-            font-weight: 600;
-            font-family: inherit;
-            cursor: pointer;
-            border: 0.5px solid var(--separator);
-        }
-
-        .error-retry:active {
-            transform: scale(0.95);
-            opacity: 0.8;
-        }
-
-        /* Exploit iframe */
         #exploit-frame {
             position: fixed;
             top: 0;
@@ -483,7 +403,7 @@
     </svg>
 
     <div class="main-content">
-        <!-- Hero -->
+
         <div class="hero in">
             <div class="hero-icon">
                 <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
@@ -492,7 +412,6 @@
             <p>iOS 26</p>
         </div>
 
-        <!-- Device Info -->
         <div class="info-section">
             <div class="card in d1">
                 <div class="card-row">
@@ -560,7 +479,6 @@
             </div>
         </div>
 
-        <!-- Progress -->
         <div class="card progress-section in d4">
             <div class="progress-ring-wrap">
                 <svg width="120" height="120" viewBox="0 0 120 120">
@@ -572,13 +490,11 @@
             <div class="progress-label" id="progress-label">Ready</div>
         </div>
 
-        <!-- Button -->
         <button class="action-btn in d5" id="jb-btn" onclick="startJailbreak()">
             Jailbreak Device
         </button>
     </div>
 
-    <!-- Respring Overlay -->
     <div class="respring-overlay" id="respring-overlay">
         <div class="apple-logo">
             <svg width="80" height="80" viewBox="0 0 170 170"><path fill="#fff" d="M150.37 130.25c-2.45 5.66-5.35 10.87-8.71 15.66-4.58 6.53-8.33 11.05-11.22 13.56-4.48 4.12-9.28 6.23-14.42 6.35-3.69 0-8.14-1.05-13.32-3.18-5.197-2.12-9.973-3.17-14.34-3.17-4.58 0-9.492 1.05-14.746 3.17-5.262 2.13-9.501 3.24-12.742 3.35-4.929.21-9.842-1.96-14.746-6.52-3.13-2.73-7.045-7.41-11.735-14.04-5.032-7.08-9.169-15.29-12.41-24.63-3.471-10.11-5.211-19.9-5.211-29.378 0-10.857 2.346-20.221 7.045-28.1 3.693-6.303 8.606-11.275 14.755-14.925s12.793-5.51 19.948-5.629c3.915 0 9.049 1.211 15.429 3.591 6.362 2.388 10.447 3.599 12.238 3.599 1.339 0 5.877-1.416 13.57-4.239 7.275-2.618 13.415-3.702 18.445-3.275 13.63 1.1 23.87 6.473 30.68 16.153-12.19 7.386-18.22 17.731-18.12 31.002.11 10.337 3.86 18.939 11.23 25.769 3.34 3.17 7.07 5.62 11.22 7.36-.9 2.61-1.85 5.11-2.86 7.51zM119.11 7.24c0 8.102-2.96 15.667-8.86 22.669-7.12 8.324-15.732 13.134-25.071 12.375-.119-.972-.188-1.995-.188-3.07 0-7.778 3.386-16.102 9.399-22.908 3.002-3.446 6.82-6.311 11.45-8.597 4.62-2.252 9.002-3.389 13.12-3.389.52 0 1.045.04 1.573.1-.13 1.5-.2 2.5-.2 3.1z"/></svg>
@@ -588,17 +504,9 @@
         </div>
     </div>
 
-    <!-- Error Overlay -->
-    <div class="error-overlay" id="error-overlay">
-        <div class="error-icon">
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-        </div>
-        <div class="error-title">Error</div>
-        <div class="error-desc" id="error-desc">Exploit failed. The device may not be vulnerable.</div>
-        <button class="error-retry" onclick="retryJailbreak()">Retry</button>
-    </div>
 
-    <!-- Tab Bar -->
+
+    
     <div class="tab-bar-wrap">
         <div class="tab-bar">
             <button class="tab-btn active" id="btn-jailbreak">
@@ -665,8 +573,6 @@
             t.textContent = pct + '%';
         }
 
-        let jailbreakAttempt = 0;
-
         function startJailbreak() {
             const btn = document.getElementById('jb-btn');
             const lbl = document.getElementById('progress-label');
@@ -691,33 +597,9 @@
                     i++;
                 } else {
                     clearInterval(iv);
-                    // 50% chance of error on first attempt
-                    if (jailbreakAttempt === 0) {
-                        jailbreakAttempt++;
-                        showError();
-                    } else {
-                        triggerRespring();
-                    }
+                    triggerRespring();
                 }
             }, 700);
-        }
-
-        function showError() {
-            const btn = document.getElementById('jb-btn');
-            const lbl = document.getElementById('progress-label');
-            const overlay = document.getElementById('error-overlay');
-
-            btn.disabled = false;
-            btn.textContent = "Jailbreak Device";
-            setProgress(0);
-            lbl.textContent = "Ready";
-
-            overlay.classList.add('active');
-        }
-
-        function retryJailbreak() {
-            document.getElementById('error-overlay').classList.remove('active');
-            startJailbreak();
         }
 
         function triggerRespring() {
@@ -727,7 +609,7 @@
 
             overlay.classList.add('active');
 
-            // Animate progress bar
+            
             setTimeout(() => bar.classList.add('visible'), 100);
 
             let progress = 0;
