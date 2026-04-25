@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=no">
+    <title>About</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+            font-family: -apple-system, 'Inter', BlinkMacSystemFont, 'SF Pro Display', sans-serif;
+        }
+
+        :root {
+            --bg: #000000;
+            --bg-elevated: #1c1c1e;
+            --bg-secondary: #2c2c2e;
+            --text-primary: #ffffff;
+            --text-secondary: rgba(255, 255, 255, 0.6);
+            --text-tertiary: rgba(255, 255, 255, 0.35);
+            --accent: #0a84ff;
+            --separator: rgba(255, 255, 255, 0.08);
+        }
+
+        body {
+            background: var(--bg);
+            color: var(--text-primary);
+            min-height: 100vh;
+            min-height: 100dvh;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .bg {
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            background:
+                radial-gradient(ellipse 80% 50% at 80% 0%, rgba(175, 82, 222, 0.08) 0%, transparent 60%),
+                radial-gradient(ellipse 60% 40% at 20% 100%, rgba(10, 132, 255, 0.06) 0%, transparent 50%),
+                var(--bg);
+        }
+
+        /* Toolbar */
+        .toolbar {
+            display: flex;
+            align-items: center;
+            padding: 12px 16px 8px;
+            gap: 12px;
+        }
+
+        .back-btn {
+            width: 32px;
+            height: 32px;
+            border-radius: 10px;
+            background: var(--bg-elevated);
+            border: 0.5px solid var(--separator);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent);
+            text-decoration: none;
+            transition: all 0.15s;
+        }
+
+        .back-btn:active {
+            transform: scale(0.9);
+            opacity: 0.7;
+        }
+
+        .back-btn svg {
+            width: 18px;
+            height: 18px;
+            stroke-width: 2.5;
+        }
+
+        .toolbar-title {
+            font-size: 20px;
+            font-weight: 700;
+            letter-spacing: -0.3px;
+        }
+
+        /* Content */
+        .main-content {
+            padding: 8px 20px 140px;
+            max-width: 430px;
+            margin: 0 auto;
+        }
+
+        /* Device Hero */
+        .device-hero {
+            padding: 28px;
+            text-align: center;
+            margin-bottom: 16px;
+        }
+
+        .device-icon {
+            width: 72px;
+            height: 72px;
+            margin: 0 auto 16px;
+            background: #0a84ff;
+            border-radius: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 16px rgba(10, 132, 255, 0.2);
+        }
+
+        .device-icon svg {
+            width: 36px;
+            height: 36px;
+            stroke: #fff;
+            stroke-width: 1.5;
+        }
+
+        .device-name {
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 4px;
+            letter-spacing: -0.3px;
+        }
+
+        .device-model {
+            font-size: 15px;
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+
+        /* Cards */
+        .card {
+            background: var(--bg-elevated);
+            border-radius: 24px;
+            overflow: hidden;
+            margin-bottom: 16px;
+        }
+
+        .card-row {
+            padding: 14px 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 0.5px solid var(--separator);
+            transition: background 0.15s;
+        }
+
+        .card-row:last-child {
+            border-bottom: none;
+        }
+
+        .card-row:active {
+            background: rgba(255, 255, 255, 0.04);
+        }
+
+        .row-label {
+            font-size: 16px;
+            font-weight: 500;
+            color: var(--text-primary);
+        }
+
+        .row-value {
+            font-size: 16px;
+            color: var(--text-secondary);
+            font-weight: 400;
+            text-align: right;
+            word-break: break-all;
+            max-width: 55%;
+        }
+
+        .chip {
+            display: inline-block;
+            padding: 3px 8px;
+            background: rgba(48, 209, 88, 0.15);
+            color: #30d158;
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .chip-beta {
+            background: rgba(255, 159, 10, 0.15);
+            color: #ff9f0a;
+        }
+
+        /* Section header */
+        .section-title {
+            font-size: 20px;
+            font-weight: 700;
+            margin: 24px 0 12px 4px;
+            letter-spacing: -0.2px;
+        }
+
+        /* Tab Bar */
+        .tab-bar-wrap {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 0 20px max(20px, env(safe-area-inset-bottom)) 20px;
+            display: flex;
+            justify-content: center;
+            z-index: 100;
+            pointer-events: none;
+        }
+
+        .tab-bar {
+            display: flex;
+            align-items: center;
+            gap: 2px;
+            padding: 5px 6px;
+            background: var(--bg-elevated);
+            border-radius: 40px;
+            border: 0.5px solid var(--separator);
+            pointer-events: auto;
+            max-width: 280px;
+            width: 100%;
+            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.5);
+        }
+
+        .tab-btn {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 3px;
+            padding: 8px 16px;
+            border-radius: 24px;
+            border: none;
+            background: transparent;
+            color: var(--text-secondary);
+            font-family: inherit;
+            font-size: 11px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.25s cubic-bezier(0.32, 0.72, 0, 1);
+            flex: 1;
+            text-decoration: none;
+            min-width: 0;
+        }
+
+        .tab-btn.active {
+            background: var(--bg-secondary);
+            color: var(--accent);
+        }
+
+        .tab-btn:active {
+            transform: scale(0.88);
+        }
+
+        .tab-btn svg {
+            width: 22px;
+            height: 22px;
+            stroke-width: 1.8;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: inherit;
+            flex: 1;
+            display: flex;
+        }
+
+        /* Animations */
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(16px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .in {
+            animation: fadeUp 0.5s cubic-bezier(0.32, 0.72, 0, 1) forwards;
+        }
+
+        .d1 { animation-delay: 0.05s; opacity: 0; }
+        .d2 { animation-delay: 0.1s; opacity: 0; }
+        .d3 { animation-delay: 0.15s; opacity: 0; }
+        .d4 { animation-delay: 0.2s; opacity: 0; }
+    </style>
+<base target="_blank">
+</head>
+<body>
+    <div class="bg"></div>
+
+    <!-- Toolbar -->
+    <div class="toolbar">
+        <a href="index.html" class="back-btn">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+        </a>
+        <span class="toolbar-title">About</span>
+    </div>
+
+    <div class="main-content">
+        <!-- Device Hero -->
+        <div class="card device-hero in">
+            <div class="device-icon">
+                <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+            </div>
+            <div class="device-name" id="about-device">iPhone</div>
+            <div class="device-model" id="about-model">Detecting...</div>
+        </div>
+
+        <!-- ONLY REAL DETECTABLE INFO -->
+        <div class="section-title in d1">Device</div>
+        <div class="card in d1">
+            <div class="card-row">
+                <span class="row-label">Name</span>
+                <span class="row-value" id="d-name">—</span>
+            </div>
+            <div class="card-row">
+                <span class="row-label">Model</span>
+                <span class="row-value" id="d-model">—</span>
+            </div>
+            <div class="card-row">
+                <span class="row-label">Platform</span>
+                <span class="row-value" id="d-platform">—</span>
+            </div>
+            <div class="card-row">
+                <span class="row-label">Screen</span>
+                <span class="row-value" id="d-screen">—</span>
+            </div>
+            <div class="card-row">
+                <span class="row-label">Pixel Ratio</span>
+                <span class="row-value" id="d-dpr">—</span>
+            </div>
+            <div class="card-row">
+                <span class="row-label">Memory</span>
+                <span class="row-value" id="d-memory">—</span>
+            </div>
+            <div class="card-row">
+                <span class="row-label">Cores</span>
+                <span class="row-value" id="d-cores">—</span>
+            </div>
+            <div class="card-row">
+                <span class="row-label">Language</span>
+                <span class="row-value" id="d-lang">—</span>
+            </div>
+            <div class="card-row">
+                <span class="row-label">Online</span>
+                <span class="row-value" id="d-online">—</span>
+            </div>
+        </div>
+
+        <div class="section-title in d2">Browser</div>
+        <div class="card in d2">
+            <div class="card-row">
+                <span class="row-label">User Agent</span>
+                <span class="row-value" id="b-ua" style="font-size:12px;">—</span>
+            </div>
+            <div class="card-row">
+                <span class="row-label">Touch</span>
+                <span class="row-value" id="b-touch">—</span>
+            </div>
+            <div class="card-row">
+                <span class="row-label">Viewport</span>
+                <span class="row-value" id="b-viewport">—</span>
+            </div>
+            <div class="card-row">
+                <span class="row-label">Color Depth</span>
+                <span class="row-value" id="b-color">—</span>
+            </div>
+        </div>
+
+        <div class="section-title in d3">Jailbreak</div>
+        <div class="card in d3">
+            <div class="card-row">
+                <span class="row-label">Status</span>
+                <span class="row-value"><span class="chip">Ready</span></span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Tab Bar -->
+    <div class="tab-bar-wrap">
+        <div class="tab-bar">
+            <a href="index.html" class="nav-link">
+                <button class="tab-btn" id="btn-jailbreak">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                    <span>Jailbreak</span>
+                </button>
+            </a>
+            <button class="tab-btn active" id="btn-about">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+                <span>About</span>
+            </button>
+        </div>
+    </div>
+
+    <script>
+        function detectAll() {
+            const ua = navigator.userAgent;
+            let device = "Unknown";
+            let model = "";
+
+            if (/iPhone/.test(ua)) {
+                device = "iPhone";
+                if (/iPhone16,2/) model = "16 Pro Max";
+                else if (/iPhone16,1/) model = "16 Pro";
+                else if (/iPhone15,5/) model = "16";
+                else if (/iPhone15,4/) model = "16 Plus";
+                else if (/iPhone15,3/) model = "15 Pro Max";
+                else if (/iPhone15,2/) model = "15 Pro";
+                else if (/iPhone15,1/) model = "15";
+                else model = "Unknown Model";
+            } else if (/iPad/.test(ua)) {
+                device = "iPad";
+                model = "Unknown Model";
+            } else if (/Android/.test(ua)) {
+                device = "Android";
+                model = "";
+            } else if (/Macintosh/.test(ua)) {
+                device = "Mac";
+                model = "";
+            } else if (/Windows/.test(ua)) {
+                device = "Windows";
+                model = "";
+            } else {
+                device = "Unknown";
+            }
+
+            document.getElementById('about-device').textContent = device;
+            document.getElementById('about-model').textContent = model || device;
+            document.getElementById('d-name').textContent = device;
+            document.getElementById('d-model').textContent = model || "—";
+            document.getElementById('d-platform').textContent = navigator.platform || "—";
+            document.getElementById('d-screen').textContent = screen.width + "x" + screen.height;
+            document.getElementById('d-dpr').textContent = (window.devicePixelRatio || 1) + "x";
+            document.getElementById('d-memory').textContent = navigator.deviceMemory ? navigator.deviceMemory + " GB" : "—";
+            document.getElementById('d-cores').textContent = navigator.hardwareConcurrency || "—";
+            document.getElementById('d-lang').textContent = navigator.language || "—";
+            document.getElementById('d-online').textContent = navigator.onLine ? "Yes" : "No";
+
+            document.getElementById('b-ua').textContent = ua.substring(0, 60) + "...";
+            document.getElementById('b-touch').textContent = ('ontouchstart' in window) ? "Supported" : "No";
+            document.getElementById('b-viewport').textContent = window.innerWidth + "x" + window.innerHeight;
+            document.getElementById('b-color').textContent = screen.colorDepth + "-bit";
+        }
+
+        detectAll();
+    </script>
+</body>
+</html>
